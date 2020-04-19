@@ -22,7 +22,8 @@ RETURNS:
 NOTES:             
 ------------------------------------------------------------------------------- */
 template <class DT>
-BinaryNodeTree<DT>::BinaryNodeTree() : rootptr(nullptr)
+BinaryNodeTree<DT>::BinaryNodeTree()
+    : rootptr(nullptr)
 {
 }
 
@@ -197,6 +198,24 @@ std::shared_ptr<BinaryNode<DT>> BinaryNodeTree<DT>::balancedAdd(std::shared_ptr<
 FUNCTION:          
 DESCRIPTION:       
 RETURNS:           
+NOTES:             
+------------------------------------------------------------------------------- */
+template <class DT>
+void BinaryNodeTree<DT>::preorder(void visit(DT &), std::shared_ptr<BinaryNode<DT>> treePtr) const
+{
+    if (treePtr != nullptr)
+    {
+        DT theItem = treePtr->getItem();
+        visit(theItem);
+        preorder(visit, treePtr->getLeftChildPtr());
+        preorder(visit, treePtr->getRightChildPtr());
+    }
+}
+
+/* -----------------------------------------------------------------------------
+FUNCTION:          
+DESCRIPTION:       
+RETURNS:           
 NOTES:           Protected method that enables recursive traversals. 
             Public traversal methods will call these protected methods.  
 ------------------------------------------------------------------------------- */
@@ -207,7 +226,7 @@ void BinaryNodeTree<DT>::inorder(void visit(DT &), std::shared_ptr<BinaryNode<DT
     {
         inorder(visit, treePtr->getLeftChildPtr());
         DT theItem = treePtr->getItem();
-        visit(theItem); // Client not only can access but also modify it
+        visit(theItem); // Client can not only access but can also modify it
         inorder(visit, treePtr->getRightChildPtr());
     }
 }
@@ -218,6 +237,29 @@ DESCRIPTION:
 RETURNS:           
 NOTES:             
 ------------------------------------------------------------------------------- */
+template <class DT>
+void BinaryNodeTree<DT>::postorder(void visit(DT &), std::shared_ptr<BinaryNode<DT>> treePtr) const
+{
+    if (treePtr != nullptr)
+    {
+        postorder(treePtr->getLeftChildPtr());
+        postorder(treePtr->getRightChildPtr());
+        DT theItem = treePtr->getItem();
+        visit(theItem);
+    }
+}
+
+/* -----------------------------------------------------------------------------
+FUNCTION:          
+DESCRIPTION:       
+RETURNS:           
+NOTES:             
+------------------------------------------------------------------------------- */
+template <class DT>
+void BinaryNodeTree<DT>::visit(DT &theItem)
+{
+    std::cout << theItem << std::endl;
+}
 
 /* -----------------------------------------------------------------------------
 FUNCTION:          

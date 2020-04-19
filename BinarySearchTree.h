@@ -30,24 +30,24 @@ protected:
     //------------------------------------------------------------
     // Recursively finds where the given node should be placed and
     // inserts it in a leaf at that point.
-    BinaryNode<DT> *placeNode(std::shared_ptr<BinaryNode<DT>> subTreePtr, std::shared_ptr<BinaryNode<DT>> newNode);
+    std::shared_ptr<BinaryNode<DT>> placeNode(std::shared_ptr<BinaryNode<DT>> subTreePtr, std::shared_ptr<BinaryNode<DT>> newNodePtr);
 
     // Removes the given target value from the tree while maintaining a
     // binary search tree.
-    BinaryNode<DT> *removeValue(std::shared_ptr<BinaryNode<DT>> subTreePtr, const DT target, bool &isSuccessful) override;
+    std::shared_ptr<BinaryNode<DT>> removeValue(std::shared_ptr<BinaryNode<DT>> subTreePtr, const DT target, bool &isSuccessful) override;
 
     // Removes a given node from a tree while maintaining a binary search tree.
-    BinaryNode<DT> *removeNode(std::shared_ptr<BinaryNode<DT>> nodePtr);
+    std::shared_ptr<BinaryNode<DT>> removeNode(std::shared_ptr<BinaryNode<DT>> nodePtr);
 
     // Removes the leftmost node in the left subtree of the node
     // pointed to by nodePtr.
     // Sets inorderSuccessor to the value in this node.
     // Returns a pointer to the revised subtree.
-    BinaryNode<DT> *removeLeftmostNode(std::shared_ptr<BinaryNode<DT>> subTreePtr, DT &inorderSuccessor);
+    std::shared_ptr<BinaryNode<DT>> removeLeftmostNode(std::shared_ptr<BinaryNode<DT>> nodePtr, DT &inorderSuccessor);
 
     // Returns a pointer to the node containing the given value,
     // or nullptr if not found.
-    BinaryNode<DT> *findNode(std::shared_ptr<BinaryNode<DT>> treePtr, const DT &target) const;
+    std::shared_ptr<BinaryNode<DT>> findNode(std::shared_ptr<BinaryNode<DT>> treePtr, const DT &target) const;
 
 public:
     //------------------------------------------------------------
@@ -59,7 +59,7 @@ public:
     virtual ~BinarySearchTree();
 
     //------------------------------------------------------------
-    // Public Methods Section.
+    // Public Methods Section. From Interface
     //------------------------------------------------------------
     bool isEmpty() const;
     int getHeight() const;
@@ -73,7 +73,7 @@ public:
     bool contains(const DT &anEntry) const;
 
     //------------------------------------------------------------
-    // Public Traversals Section.
+    // Public Traversals Section. From Interface
     //------------------------------------------------------------
     void preorderTraverse(void visit(DT &)) const;
     void inorderTraverse(void visit(DT &)) const;
@@ -82,8 +82,7 @@ public:
     //------------------------------------------------------------
     // Overloaded Operator Section.
     //------------------------------------------------------------
-    BinarySearchTree<DT> &
-    operator=(const BinarySearchTree<DT> &rightHandSide);
+    BinarySearchTree<DT> &operator=(const BinarySearchTree<DT> &rightHandSide);
 };
 
 #include "BinarySearchTree.cpp"

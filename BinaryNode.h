@@ -13,7 +13,7 @@ Conner Fissell     **-**-2020         1.0  Original version
 #ifndef __BINARY_NODE_H__
 #define __BINARY_NODE_H__
 
-//#include "BinaryTreeInterface.h"
+#include "BinaryTreeInterface.h"
 
 #include <iostream>
 #include <memory>
@@ -30,6 +30,7 @@ public:
     BinaryNode();
     BinaryNode(const DT &anItem);
     BinaryNode(const DT &anItem, std::shared_ptr<BinaryNode<DT>> leftPtr, std::shared_ptr<BinaryNode<DT>> rightPtr);
+    virtual ~BinaryNode();
     void setItem(const DT &anItem);
     DT getItem() const;
     bool isLeaf() const;

@@ -60,13 +60,14 @@ protected:
     void postorder(void visit(DT &), std::shared_ptr<BinaryNode<DT>> treePtr) const;
 
 public:
+    void visit(DT &theItem);
     //------------------------------------------------------------
     // Constructor and Destructor Section.
     //------------------------------------------------------------
-    BinaryNodeTree();
-    BinaryNodeTree(const DT &rootItem);
-    BinaryNodeTree(const DT &rootItem, const std::shared_ptr<BinaryNode<DT>> leftTreePtr, const std::shared_ptr<BinaryNode<DT>> rightTreePtr);
-    BinaryNodeTree(const BinaryNodeTree<DT> &tree);
+    BinaryNodeTree();                                                                                                                          // Default Constructor
+    BinaryNodeTree(const DT &rootItem);                                                                                                        // Paramaterized Con 1
+    BinaryNodeTree(const DT &rootItem, const std::shared_ptr<BinaryNode<DT>> leftTreePtr, const std::shared_ptr<BinaryNode<DT>> rightTreePtr); // Paramaterized Con 2
+    BinaryNodeTree(const BinaryNodeTree<DT> &tree);                                                                                            // Copy Constructor
     virtual ~BinaryNodetree();
 
     //------------------------------------------------------------
