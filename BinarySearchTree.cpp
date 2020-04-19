@@ -225,14 +225,13 @@ BinarySearchTree<DT>::~BinarySearchTree()
 FUNCTION:          
 DESCRIPTION:       
 RETURNS:           
-NOTES:            
+NOTES:             
 ------------------------------------------------------------------------------- */
-/* -----------------------------------------------------------------------------
-FUNCTION:          
-DESCRIPTION:       
-RETURNS:           
-NOTES:            
-------------------------------------------------------------------------------- */
+template <class DT>
+void BinarySearchTree<DT>::visit(DT &theItem)
+{
+    std::cout << theItem << std::endl;
+}
 
 /* -----------------------------------------------------------------------------
 FUNCTION:          
@@ -240,6 +239,20 @@ DESCRIPTION:
 RETURNS:           
 NOTES:            
 ------------------------------------------------------------------------------- */
+template <class DT>
+bool BinarySearchTree<DT>::isEmpty() const
+{
+}
+/* -----------------------------------------------------------------------------
+FUNCTION:          
+DESCRIPTION:       
+RETURNS:           
+NOTES:            
+------------------------------------------------------------------------------- */
+template <class DT>
+int BinarySearchTree<DT>::getHeight() const
+{
+}
 
 /* -----------------------------------------------------------------------------
 FUNCTION:          
@@ -247,6 +260,10 @@ DESCRIPTION:
 RETURNS:           
 NOTES:            
 ------------------------------------------------------------------------------- */
+template <class DT>
+int BinarySearchTree<DT>::getNumberOfNodes() const
+{
+}
 
 /* -----------------------------------------------------------------------------
 FUNCTION:          
@@ -254,6 +271,21 @@ DESCRIPTION:
 RETURNS:           
 NOTES:            
 ------------------------------------------------------------------------------- */
+template <class DT>
+DT BinarySearchTree<DT>::getRootData() const
+{
+}
+
+/* -----------------------------------------------------------------------------
+FUNCTION:          
+DESCRIPTION:       
+RETURNS:           
+NOTES:            
+------------------------------------------------------------------------------- */
+template <class DT>
+void BinarySearchTree<DT>::setRootData(const DT &newData)
+{
+}
 
 /* -----------------------------------------------------------------------------
 FUNCTION:          
@@ -290,6 +322,10 @@ DESCRIPTION:
 RETURNS:           
 NOTES:            
 ------------------------------------------------------------------------------- */
+template <class DT>
+void BinarySearchTree<DT>::clear()
+{
+}
 
 /* -----------------------------------------------------------------------------
 FUNCTION:          
@@ -297,6 +333,10 @@ DESCRIPTION:
 RETURNS:           
 NOTES:            
 ------------------------------------------------------------------------------- */
+template <class DT>
+DT BinarySearchTree<DT>::getEntry(const DT &anEntry) const
+{
+}
 
 /* -----------------------------------------------------------------------------
 FUNCTION:          
@@ -304,6 +344,10 @@ DESCRIPTION:
 RETURNS:           
 NOTES:            
 ------------------------------------------------------------------------------- */
+template <class DT>
+bool BinarySearchTree<DT>::contains(const DT &anEntry) const
+{
+}
 
 /* -----------------------------------------------------------------------------
 FUNCTION:          
@@ -311,6 +355,10 @@ DESCRIPTION:
 RETURNS:           
 NOTES:            
 ------------------------------------------------------------------------------- */
+template <class DT>
+void BinarySearchTree<DT>::preorderTraverse(void visit(DT &)) const
+{
+}
 
 /* -----------------------------------------------------------------------------
 FUNCTION:          
@@ -318,6 +366,10 @@ DESCRIPTION:
 RETURNS:           
 NOTES:            
 ------------------------------------------------------------------------------- */
+template <class DT>
+void BinarySearchTree<DT>::inorderTraverse(void visit(DT &)) const
+{
+}
 
 /* -----------------------------------------------------------------------------
 FUNCTION:          
@@ -325,5 +377,20 @@ DESCRIPTION:
 RETURNS:           
 NOTES:            
 ------------------------------------------------------------------------------- */
+template <class DT>
+void BinarySearchTree<DT>::postorderTraverse(void visit(DT &)) const
+{
+}
+
+/* -----------------------------------------------------------------------------
+FUNCTION:          
+DESCRIPTION:       
+RETURNS:           
+NOTES:            
+------------------------------------------------------------------------------- */
+template <class DT>
+BinarySearchTree<DT> &BinarySearchTree<DT>::operator=(const BinarySearchTree<DT> &rightHandSide)
+{
+}
 
 #endif

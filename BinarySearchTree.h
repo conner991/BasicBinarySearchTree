@@ -58,6 +58,8 @@ public:
     BinarySearchTree(const BinarySearchTree<DT> &tree);
     virtual ~BinarySearchTree();
 
+    void visit(DT &theItem);
+
     //------------------------------------------------------------
     // Public Methods Section. From Interface
     //------------------------------------------------------------
