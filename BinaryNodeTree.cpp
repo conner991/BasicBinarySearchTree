@@ -19,7 +19,10 @@ Conner Fissell     **-**-2020         1.0  Original version
 FUNCTION:          
 DESCRIPTION:       
 RETURNS:           
-NOTES:          Protected method getHeightHelper called by method getHeight   
+NOTES:          Protected method getHeightHelper called by method getHeight. Defines
+            Height as the number of nodes on the longest path from the root to a leaf.
+            If we were defining it as the num of edges, then the base case would 
+            return -1.
 ------------------------------------------------------------------------------- */
 template <class DT>
 int BinaryNodeTree<DT>::getHeightHelper(std::shared_ptr<BinaryNode<DT>> subTreePtr) const
@@ -28,7 +31,7 @@ int BinaryNodeTree<DT>::getHeightHelper(std::shared_ptr<BinaryNode<DT>> subTreeP
         return 0;
     else
     {
-        return 1 + max(getHeightHelper(subTreePtr->getLeftChildPtr()), getHeightHelper(subTreePtr->getRightChildPtr()));
+        return 1 + std::max(getHeightHelper(subTreePtr->getLeftChildPtr()), getHeightHelper(subTreePtr->getRightChildPtr()));
     }
 }
 
@@ -41,6 +44,7 @@ NOTES:          Protected method getHeightHelper called by method getHeight
 template <class DT>
 int BinaryNodeTree<DT>::getNumberOfNodesHelper(std::shared_ptr<BinaryNode<DT>> subTreePtr) const
 {
+    return 0;
 }
 
 /* -----------------------------------------------------------------------------
@@ -152,17 +156,17 @@ NOTES:             Must be linked together by using new pointers. You
                 cannot simply copy the pointers in the nodes of the original tree. Deep Copy
 ------------------------------------------------------------------------------- */
 template <class DT>
-std::shared_ptr<BinaryNode<DT>> BinaryNodeTree<DT>::copyTree(const std::shared_ptr<BinaryNode<DT>> oldTreeRootPtr) const
+std::shared_ptr<BinaryNode<DT>> BinaryNodeTree<DT>::copyTree(const std::shared_ptr<BinaryNode<DT>> oldTreerootPtr) const
 {
     std::shared_ptr<BinaryNode<DT>> newTreePtr;
 
     // Copy tree nodes during a preorder traversal
-    if (oldTreeRootPtr != nullptr)
+    if (oldTreerootPtr != nullptr)
     {
         // Copy Node
-        newTreePtr = std::make_shared<BinaryNode<DT>>(oldTreeRootPtr->getItem(), nullptr, nullptr);
-        newTreePtr->setLeftChildPtr(copyTree(oldTreeRootPtr->getLeftChildPtr()));
-        newTreePtr->setRightChildPtr(copyTree(oldTreeRootPtr->getRightChildPtr()));
+        newTreePtr = std::make_shared<BinaryNode<DT>>(oldTreerootPtr->getItem(), nullptr, nullptr);
+        newTreePtr->setLeftChildPtr(copyTree(oldTreerootPtr->getLeftChildPtr()));
+        newTreePtr->setRightChildPtr(copyTree(oldTreerootPtr->getRightChildPtr()));
     }
     return newTreePtr;
 }
@@ -215,8 +219,8 @@ void BinaryNodeTree<DT>::postorder(void visit(DT &), std::shared_ptr<BinaryNode<
 {
     if (treePtr != nullptr)
     {
-        postorder(treePtr->getLeftChildPtr());
-        postorder(treePtr->getRightChildPtr());
+        postorder(visit, treePtr->getLeftChildPtr());
+        postorder(visit, treePtr->getRightChildPtr());
         DT theItem = treePtr->getItem();
         visit(theItem);
     }
@@ -230,7 +234,7 @@ NOTES:
 ------------------------------------------------------------------------------- */
 template <class DT>
 BinaryNodeTree<DT>::BinaryNodeTree()
-    : rootptr(nullptr)
+    : rootPtr(nullptr)
 {
 }
 
@@ -243,7 +247,7 @@ NOTES:             rootPtr = new BinaryNode<ItemType>(rootItem, nullptr, nullptr
 ------------------------------------------------------------------------------- */
 template <class DT>
 BinaryNodeTree<DT>::BinaryNodeTree(const DT &rootItem)
-    : rootptr(std::shared_ptr<BinaryNode<DT>>(rootItem, nullptr, nullptr))
+    : rootPtr(std::shared_ptr<BinaryNode<DT>>(rootItem, nullptr, nullptr))
 {
 }
 
@@ -255,9 +259,9 @@ NOTES:             Requires implicit use of traversal. Role of the protected
                     method copyTree
 ------------------------------------------------------------------------------- */
 template <class DT>
-BinaryNodeTree<DT>::BinaryNodeTree(const DT &rooItem, const std::shared_ptr<BinaryNode<DT>> leftTreePtr,
+BinaryNodeTree<DT>::BinaryNodeTree(const DT &rootItem, const std::shared_ptr<BinaryNode<DT>> leftTreePtr,
                                    const std::shared_ptr<BinaryNode<DT>> rightTreePtr)
-    : rootptr(std::shared_ptr<BinaryNode<DT>>(rootItem, copyTree(leftTreePtr->rootPtr), copyTree(rightTreePtr->rootPtr)))
+    : rootPtr(std::shared_ptr<BinaryNode<DT>>(rootItem, copyTree(leftTreePtr->rootPtr), copyTree(rightTreePtr->rootPtr)))
 {
 }
 
@@ -294,6 +298,7 @@ NOTES:
 template <class DT>
 bool BinaryNodeTree<DT>::isEmpty() const
 {
+    return true;
 }
 
 /* -----------------------------------------------------------------------------
@@ -317,6 +322,7 @@ NOTES:
 template <class DT>
 int BinaryNodeTree<DT>::getNumberOfNodes() const
 {
+    return 0;
 }
 
 /* -----------------------------------------------------------------------------
@@ -328,6 +334,8 @@ NOTES:
 template <class DT>
 DT BinaryNodeTree<DT>::getRootData() const
 {
+    DT thing;
+    return thing;
 }
 
 /* -----------------------------------------------------------------------------
@@ -365,6 +373,7 @@ NOTES:
 template <class DT>
 bool BinaryNodeTree<DT>::remove(const DT &data)
 {
+    return true;
 }
 
 /* -----------------------------------------------------------------------------
@@ -387,6 +396,8 @@ NOTES:
 template <class DT>
 DT BinaryNodeTree<DT>::getEntry(const DT &anEntry) const
 {
+    DT thing1;
+    return thing1;
 }
 
 /* -----------------------------------------------------------------------------
@@ -398,6 +409,7 @@ NOTES:
 template <class DT>
 bool BinaryNodeTree<DT>::contains(const DT &anEntry) const
 {
+    return true;
 }
 
 /* -----------------------------------------------------------------------------
@@ -409,6 +421,7 @@ NOTES:
 template <class DT>
 void BinaryNodeTree<DT>::preorderTraverse(void visit(DT &)) const
 {
+    preorder(visit, rootPtr);
 }
 
 /* -----------------------------------------------------------------------------
@@ -420,6 +433,7 @@ NOTES:
 template <class DT>
 void BinaryNodeTree<DT>::inorderTraverse(void visit(DT &)) const
 {
+    inorder(visit, rootPtr);
 }
 
 /* -----------------------------------------------------------------------------
@@ -431,6 +445,7 @@ NOTES:
 template <class DT>
 void BinaryNodeTree<DT>::postorderTraverse(void visit(DT &)) const
 {
+    postorder(visit, rootPtr);
 }
 
 /* -----------------------------------------------------------------------------
@@ -438,10 +453,10 @@ FUNCTION:
 DESCRIPTION:       
 RETURNS:           
 NOTES:            
-------------------------------------------------------------------------------- */
+------------------------------------------------------------------------------- 
 template <class DT>
 BinaryNodeTree<DT> &BinaryNodeTree<DT>::operator=(const BinaryNodeTree<DT> &rightHandSide)
 {
-}
+}*/
 
 #endif

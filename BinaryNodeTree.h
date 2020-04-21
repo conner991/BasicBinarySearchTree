@@ -67,7 +67,7 @@ public:
     BinaryNodeTree(const DT &rootItem);                                                                                                        // Paramaterized Con 1
     BinaryNodeTree(const DT &rootItem, const std::shared_ptr<BinaryNode<DT>> leftTreePtr, const std::shared_ptr<BinaryNode<DT>> rightTreePtr); // Paramaterized Con 2
     BinaryNodeTree(const BinaryNodeTree<DT> &tree);                                                                                            // Copy Constructor
-    virtual ~BinaryNodetree();
+    virtual ~BinaryNodeTree();
 
     // -----------------------------------------------------------
     void visit(DT &theItem);
@@ -75,28 +75,28 @@ public:
     //------------------------------------------------------------
     // Public BinaryTreeInterface Methods Section.
     //------------------------------------------------------------
-    bool isEmpty() const;
-    int getHeight() const;
-    int getNumberOfNodes() const;
-    DT getRootData() const;
-    void setRootData(const DT &newData);
-    bool add(const DT &newData);
-    bool remove(const DT &data);
-    void clear();
-    DT getEntry(const DT &anEntry) const;
-    bool contains(const DT &anEntry) const;
+    virtual bool isEmpty() const;
+    virtual int getHeight() const;
+    virtual int getNumberOfNodes() const;
+    virtual DT getRootData() const;
+    virtual void setRootData(const DT &newData);
+    virtual bool add(const DT &newData);
+    virtual bool remove(const DT &data);
+    virtual void clear();
+    virtual DT getEntry(const DT &anEntry) const;
+    virtual bool contains(const DT &anEntry) const;
 
     //------------------------------------------------------------
     // Public Traversal Section.
     //------------------------------------------------------------
-    void preorderTraverse(void visit(DT &)) const;
-    void inorderTraverse(void visit(DT &)) const;
-    void postorderTraverse(void visit(DT &)) const;
+    virtual void preorderTraverse(void visit(DT &)) const;
+    virtual void inorderTraverse(void visit(DT &)) const;
+    virtual void postorderTraverse(void visit(DT &)) const;
 
     //------------------------------------------------------------
     // Overloaded Operator Section.
     //------------------------------------------------------------
-    BinaryNodeTree &operator=(const BinaryNodeTree &rightHandSide);
+    // virtual BinaryNodeTree<DT> &operator=(const BinaryNodeTree<DT> &rightHandSide);
 };
 
 #include "BinaryNodeTree.cpp"

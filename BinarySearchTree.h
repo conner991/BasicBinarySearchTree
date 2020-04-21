@@ -34,7 +34,7 @@ protected:
 
     // Removes the given target value from the tree while maintaining a
     // binary search tree.
-    std::shared_ptr<BinaryNode<DT>> removeValue(std::shared_ptr<BinaryNode<DT>> subTreePtr, const DT target, bool &isSuccessful) override;
+    std::shared_ptr<BinaryNode<DT>> removeValue(std::shared_ptr<BinaryNode<DT>> subTreePtr, const DT target, bool &isSuccessful);
 
     // Removes a given node from a tree while maintaining a binary search tree.
     std::shared_ptr<BinaryNode<DT>> removeNode(std::shared_ptr<BinaryNode<DT>> nodePtr);
@@ -63,28 +63,28 @@ public:
     //------------------------------------------------------------
     // Public Methods Section. From Interface
     //------------------------------------------------------------
-    bool isEmpty() const;
-    int getHeight() const;
-    int getNumberOfNodes() const;
-    DT getRootData() const;
-    void setRootData(const DT &newData);
-    bool add(const DT &newEntry);
-    bool remove(const DT &target);
-    void clear();
-    DT getEntry(const DT &anEntry) const;
-    bool contains(const DT &anEntry) const;
+    bool isEmpty() const override;
+    int getHeight() const override;
+    int getNumberOfNodes() const override;
+    DT getRootData() const override;
+    void setRootData(const DT &newData) override;
+    bool add(const DT &newEntry) override;
+    bool remove(const DT &target) override;
+    void clear() override;
+    DT getEntry(const DT &anEntry) const override;
+    bool contains(const DT &anEntry) const override;
 
     //------------------------------------------------------------
     // Public Traversals Section. From Interface
     //------------------------------------------------------------
-    void preorderTraverse(void visit(DT &)) const;
-    void inorderTraverse(void visit(DT &)) const;
-    void postorderTraverse(void visit(DT &)) const;
+    void preorderTraverse(void visit(DT &)) const override;
+    void inorderTraverse(void visit(DT &)) const override;
+    void postorderTraverse(void visit(DT &)) const override;
 
     //------------------------------------------------------------
     // Overloaded Operator Section.
     //------------------------------------------------------------
-    BinarySearchTree<DT> &operator=(const BinarySearchTree<DT> &rightHandSide);
+    // BinarySearchTree<DT> &operator=(const BinarySearchTree<DT> &rightHandSide) override;
 };
 
 #include "BinarySearchTree.cpp"

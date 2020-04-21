@@ -53,20 +53,25 @@ template <class DT>
 std::shared_ptr<BinaryNode<DT>> BinarySearchTree<DT>::removeValue(std::shared_ptr<BinaryNode<DT>> subTreePtr,
                                                                   const DT target, bool &isSuccessful)
 {
+
     if (subTreePtr == nullptr)
+    {
         isSuccessful = false;
+        return nullptr;
+    }
 
     else if (subTreePtr->getItem() == target)
     {
         // Item is in the root of some sub tree
         subTreePtr = removeNode(subTreePtr); // Remove the item
+        isSuccessful = true;
     }
 
     else if (subTreePtr->getItem() > target)
     {
         // Search the left sub tree
         std::shared_ptr<BinaryNode<DT>> tempPtr = removeValue(subTreePtr->getLeftChildPtr(), target, isSuccessful);
-        subTreePtr->setLeftChildPtr()(tempPtr);
+        subTreePtr->setLeftChildPtr(tempPtr);
     }
 
     else
@@ -75,6 +80,8 @@ std::shared_ptr<BinaryNode<DT>> BinarySearchTree<DT>::removeValue(std::shared_pt
         std::shared_ptr<BinaryNode<DT>> tempPtr = removeValue(subTreePtr->getRightChildPtr(), target, isSuccessful);
         subTreePtr->setRightChildPtr(tempPtr);
     }
+
+    return subTreePtr;
 }
 
 /* -----------------------------------------------------------------------------
@@ -226,7 +233,7 @@ FUNCTION:
 DESCRIPTION:       
 RETURNS:           
 NOTES:             
-------------------------------------------------------------------------------- */
+-------------------------------------------------------------------------------*/
 template <class DT>
 void BinarySearchTree<DT>::visit(DT &theItem)
 {
@@ -242,6 +249,7 @@ NOTES:
 template <class DT>
 bool BinarySearchTree<DT>::isEmpty() const
 {
+    return true;
 }
 /* -----------------------------------------------------------------------------
 FUNCTION:          
@@ -252,6 +260,7 @@ NOTES:
 template <class DT>
 int BinarySearchTree<DT>::getHeight() const
 {
+    return getHeightHelper(rootPtr);
 }
 
 /* -----------------------------------------------------------------------------
@@ -263,6 +272,7 @@ NOTES:
 template <class DT>
 int BinarySearchTree<DT>::getNumberOfNodes() const
 {
+    return 0;
 }
 
 /* -----------------------------------------------------------------------------
@@ -274,6 +284,8 @@ NOTES:
 template <class DT>
 DT BinarySearchTree<DT>::getRootData() const
 {
+    DT thing;
+    return thing;
 }
 
 /* -----------------------------------------------------------------------------
@@ -336,6 +348,8 @@ NOTES:
 template <class DT>
 DT BinarySearchTree<DT>::getEntry(const DT &anEntry) const
 {
+    DT thing1;
+    return thing1;
 }
 
 /* -----------------------------------------------------------------------------
@@ -347,6 +361,7 @@ NOTES:
 template <class DT>
 bool BinarySearchTree<DT>::contains(const DT &anEntry) const
 {
+    return true;
 }
 
 /* -----------------------------------------------------------------------------
@@ -358,6 +373,7 @@ NOTES:
 template <class DT>
 void BinarySearchTree<DT>::preorderTraverse(void visit(DT &)) const
 {
+    this->preorder(visit, rootPtr);
 }
 
 /* -----------------------------------------------------------------------------
@@ -369,6 +385,7 @@ NOTES:
 template <class DT>
 void BinarySearchTree<DT>::inorderTraverse(void visit(DT &)) const
 {
+    inorder(visit, rootPtr);
 }
 
 /* -----------------------------------------------------------------------------
@@ -380,6 +397,7 @@ NOTES:
 template <class DT>
 void BinarySearchTree<DT>::postorderTraverse(void visit(DT &)) const
 {
+    postorder(visit, rootPtr);
 }
 
 /* -----------------------------------------------------------------------------
@@ -387,10 +405,10 @@ FUNCTION:
 DESCRIPTION:       
 RETURNS:           
 NOTES:            
-------------------------------------------------------------------------------- */
+------------------------------------------------------------------------------- 
 template <class DT>
 BinarySearchTree<DT> &BinarySearchTree<DT>::operator=(const BinarySearchTree<DT> &rightHandSide)
 {
-}
+}*/
 
 #endif
