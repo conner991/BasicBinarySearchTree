@@ -18,7 +18,9 @@ Conner Fissell     **-**-2020         1.0  Original version
 #include <iostream>
 #include <memory>
 #include <algorithm>
+#include <vector>
 #include <ctime>
+#include <random>
 #include <fstream>
 
 template <class DT>

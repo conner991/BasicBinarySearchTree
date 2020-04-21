@@ -281,6 +281,18 @@ BinaryNodeTree<DT>::BinaryNodeTree(const BinaryNodeTree<DT> &treePtr)
 FUNCTION:          
 DESCRIPTION:       
 RETURNS:           
+NOTES:              
+------------------------------------------------------------------------------- */
+template <class DT>
+BinaryNodeTree<DT>::~BinaryNodeTree()
+{
+    
+}
+
+/* -----------------------------------------------------------------------------
+FUNCTION:          
+DESCRIPTION:       
+RETURNS:           
 NOTES:             
 ------------------------------------------------------------------------------- */
 template <class DT>

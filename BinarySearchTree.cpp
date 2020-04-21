@@ -260,7 +260,7 @@ NOTES:
 template <class DT>
 int BinarySearchTree<DT>::getHeight() const
 {
-    return getHeightHelper(rootPtr);
+    return this->getHeightHelper(rootPtr);
 }
 
 /* -----------------------------------------------------------------------------
@@ -307,7 +307,7 @@ NOTES:
 ------------------------------------------------------------------------------- */
 template <class DT>
 bool BinarySearchTree<DT>::add(const DT &newData)
-{
+{   
     auto newsubTreePtr = std::make_shared<BinaryNode<DT>>(newData);
     rootPtr = placeNode(rootPtr, newsubTreePtr);
 
@@ -385,7 +385,7 @@ NOTES:
 template <class DT>
 void BinarySearchTree<DT>::inorderTraverse(void visit(DT &)) const
 {
-    inorder(visit, rootPtr);
+    this->inorder(visit, rootPtr);
 }
 
 /* -----------------------------------------------------------------------------
@@ -397,7 +397,7 @@ NOTES:
 template <class DT>
 void BinarySearchTree<DT>::postorderTraverse(void visit(DT &)) const
 {
-    postorder(visit, rootPtr);
+    this->postorder(visit, rootPtr);
 }
 
 /* -----------------------------------------------------------------------------

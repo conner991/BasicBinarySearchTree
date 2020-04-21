@@ -59,6 +59,17 @@ RETURNS:
 NOTES:              
 ------------------------------------------------------------------------------- */
 template <class DT>
+BinaryNode<DT>::~BinaryNode()
+{
+    
+}
+/* -----------------------------------------------------------------------------
+FUNCTION:          
+DESCRIPTION:       
+RETURNS:           
+NOTES:              
+------------------------------------------------------------------------------- */
+template <class DT>
 void BinaryNode<DT>::setItem(const DT &anItem)
 {
     item = anItem;

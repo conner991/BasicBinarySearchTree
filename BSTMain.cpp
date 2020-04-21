@@ -18,7 +18,7 @@ Conner Fissell     **-**-2020         1.0  Original version
 // #pragma warning(disable : 4996)
 
 // Prototypes
-void RNG(int treeNums[], int range);
+void RNG(std::vector<int>& treeNums);
 void visit(int &num);
 /* -----------------------------------------------------------------------------
 FUNCTION:          
@@ -28,18 +28,20 @@ NOTES:
 ------------------------------------------------------------------------------- */
 int main()
 {
-    int range = 25;
-    int treeNums[range];
-
-    // Generate random numbers, insert in array
-    RNG(treeNums, range);
-
+    
+    std::vector<int> treeNums;
+    
+    // Generate random numbers, insert into a vector
+    RNG(treeNums);
+    
     // Insert numbers into a BST
-    BinarySearchTree<int> *tree;
+     std::shared_ptr<BinarySearchTree<int>> tree = std::make_shared<BinarySearchTree<int>>();
 
-    for (int i = 0; i < ARRAY_SIZE(treeNums); i++)
-    {
-        if (!tree->add(treeNums[i]))
+    // BinarySearchTree<int> tree;//std::cout << "HERE\n";
+
+    for (int i = 0; i < treeNums.size(); i++)
+    {   
+        if (!(tree->add(treeNums[i])))
         {
             std::cout << "Value(s) not entered correctly\n\n";
             break;
@@ -47,7 +49,7 @@ int main()
     }
 
     // traverse and display
-    tree->preorderTraverse(visit);
+    tree->inorderTraverse(visit);
 }
 
 /* -----------------------------------------------------------------------------
@@ -56,17 +58,31 @@ DESCRIPTION:
 RETURNS:           
 NOTES:             
 ------------------------------------------------------------------------------- */
-void RNG(int treeNums[], int range)
-{
+void RNG(std::vector<int>& treeNums)
+{   
+    int uValues = 200;
 
     //RNG
     unsigned seed = time(0);
     srand(seed);
 
-    for (int i = 0; i < range; i++)
+    for (int i = 1; i < uValues; i++)
     {
-        treeNums[i] = (rand() % range) + 1;
+        treeNums.push_back(i);
+        //std::cout << treeNums[i] << std::endl;
     }
+
+    std::shuffle(treeNums.begin(), treeNums.end(), std::default_random_engine(rand())); 
+
+    for (int i = 0; i < 100; i++)
+    {
+        treeNums.erase(treeNums.begin() + i);
+    }
+
+    // for (int i = 0; i < treeNums.size(); i++)
+        // std::cout << treeNums[i] << std::endl;
+        
+    
 }
 
 /* -----------------------------------------------------------------------------
