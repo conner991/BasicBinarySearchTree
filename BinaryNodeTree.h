@@ -55,9 +55,9 @@ protected:
     std::shared_ptr<BinaryNode<DT>> copyTree(const std::shared_ptr<BinaryNode<DT>> treePtr) const;
 
     // Recursive traversal helper methods:
-    void preorder(void visit(DT &), std::shared_ptr<BinaryNode<DT>> treePtr) const;
-    void inorder(void visit(DT &), std::shared_ptr<BinaryNode<DT>> treePtr) const;
-    void postorder(void visit(DT &), std::shared_ptr<BinaryNode<DT>> treePtr) const;
+    void preorder(void visit(DT &, std::fstream&), std::shared_ptr<BinaryNode<DT>> treePtr, std::fstream&) const;
+    void inorder(void visit(DT &, std::fstream&), std::shared_ptr<BinaryNode<DT>> treePtr, std::fstream&) const;
+    void postorder(void visit(DT &, std::fstream&), std::shared_ptr<BinaryNode<DT>> treePtr, std::fstream&) const;
 
 public:
     //------------------------------------------------------------
@@ -89,9 +89,9 @@ public:
     //------------------------------------------------------------
     // Public Traversal Section.
     //------------------------------------------------------------
-    virtual void preorderTraverse(void visit(DT &)) const;
-    virtual void inorderTraverse(void visit(DT &)) const;
-    virtual void postorderTraverse(void visit(DT &)) const;
+    // virtual void preorderTraverse(void visit(DT &, std::fstream&)) const;
+    // virtual void inorderTraverse(void visit(DT &, std::fstream&)) const;
+    // virtual void postorderTraverse(void visit(DT &, std::fstream&)) const;
 
     //------------------------------------------------------------
     // Overloaded Operator Section.

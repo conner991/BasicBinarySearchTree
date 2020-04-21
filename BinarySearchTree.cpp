@@ -371,9 +371,11 @@ RETURNS:
 NOTES:            
 ------------------------------------------------------------------------------- */
 template <class DT>
-void BinarySearchTree<DT>::preorderTraverse(void visit(DT &)) const
-{
-    this->preorder(visit, rootPtr);
+void BinarySearchTree<DT>::preorderTraverse(void visit(DT &, std::fstream&), std::fstream& fileOut) const
+{   
+    
+    this->preorder(visit, rootPtr, fileOut);
+
 }
 
 /* -----------------------------------------------------------------------------
@@ -383,9 +385,11 @@ RETURNS:
 NOTES:            
 ------------------------------------------------------------------------------- */
 template <class DT>
-void BinarySearchTree<DT>::inorderTraverse(void visit(DT &)) const
-{
-    this->inorder(visit, rootPtr);
+void BinarySearchTree<DT>::inorderTraverse(void visit(DT &, std::fstream&), std::fstream& fileOut) const
+{   
+
+    this->inorder(visit, rootPtr, fileOut);
+
 }
 
 /* -----------------------------------------------------------------------------
@@ -395,9 +399,11 @@ RETURNS:
 NOTES:            
 ------------------------------------------------------------------------------- */
 template <class DT>
-void BinarySearchTree<DT>::postorderTraverse(void visit(DT &)) const
-{
-    this->postorder(visit, rootPtr);
+void BinarySearchTree<DT>::postorderTraverse(void visit(DT &, std::fstream&), std::fstream& fileOut) const
+{   
+    
+    this->postorder(visit, rootPtr, fileOut);
+
 }
 
 /* -----------------------------------------------------------------------------

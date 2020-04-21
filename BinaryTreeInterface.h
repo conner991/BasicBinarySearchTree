@@ -13,6 +13,9 @@ Conner Fissell     **-**-2020         1.0  Original version
 #ifndef __BINARY_TREE_INTERFACE_H__
 #define __BINARY_TREE_INTERFACE_H__
 
+#include <iostream>
+#include <fstream>
+
 template <class DT>
 class BinaryTreeInterface
 {
@@ -27,9 +30,9 @@ public:
     virtual void clear() = 0;
     virtual DT getEntry(const DT &anEntry) const = 0;
     virtual bool contains(const DT &anEntry) const = 0;
-    virtual void preorderTraverse(void visit(DT &)) const = 0;
-    virtual void inorderTraverse(void visit(DT &)) const = 0;
-    virtual void postorderTraverse(void visit(DT &)) const = 0;
+    virtual void preorderTraverse(void visit(DT &, std::fstream&), std::fstream&) const = 0;
+    virtual void inorderTraverse(void visit(DT &, std::fstream&), std::fstream&) const = 0;
+    virtual void postorderTraverse(void visit(DT &, std::fstream&), std::fstream&) const = 0;
 };
 
 #endif

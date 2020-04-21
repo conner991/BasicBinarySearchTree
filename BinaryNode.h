@@ -21,7 +21,7 @@ Conner Fissell     **-**-2020         1.0  Original version
 #include <vector>
 #include <ctime>
 #include <random>
-#include <fstream>
+//#include <fstream>
 
 template <class DT>
 class BinaryNode

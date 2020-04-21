@@ -178,14 +178,14 @@ RETURNS:
 NOTES:             
 ------------------------------------------------------------------------------- */
 template <class DT>
-void BinaryNodeTree<DT>::preorder(void visit(DT &), std::shared_ptr<BinaryNode<DT>> treePtr) const
+void BinaryNodeTree<DT>::preorder(void visit(DT &, std::fstream&), std::shared_ptr<BinaryNode<DT>> treePtr, std::fstream& fileOut) const
 {
     if (treePtr != nullptr)
     {
         DT theItem = treePtr->getItem();
-        visit(theItem);
-        preorder(visit, treePtr->getLeftChildPtr());
-        preorder(visit, treePtr->getRightChildPtr());
+        visit(theItem, fileOut);
+        preorder(visit, treePtr->getLeftChildPtr(), fileOut);
+        preorder(visit, treePtr->getRightChildPtr(), fileOut);
     }
 }
 
@@ -197,14 +197,14 @@ NOTES:           Protected method that enables recursive traversals.
             Public traversal methods will call these protected methods.  
 ------------------------------------------------------------------------------- */
 template <class DT>
-void BinaryNodeTree<DT>::inorder(void visit(DT &), std::shared_ptr<BinaryNode<DT>> treePtr) const
+void BinaryNodeTree<DT>::inorder(void visit(DT &, std::fstream&), std::shared_ptr<BinaryNode<DT>> treePtr, std::fstream& fileOut) const
 {
     if (treePtr != nullptr)
     {
-        inorder(visit, treePtr->getLeftChildPtr());
+        inorder(visit, treePtr->getLeftChildPtr(), fileOut);
         DT theItem = treePtr->getItem();
-        visit(theItem); // Client can not only access but can also modify it
-        inorder(visit, treePtr->getRightChildPtr());
+        visit(theItem, fileOut); // Client can not only access but can also modify it
+        inorder(visit, treePtr->getRightChildPtr(), fileOut);
     }
 }
 
@@ -215,14 +215,14 @@ RETURNS:
 NOTES:             
 ------------------------------------------------------------------------------- */
 template <class DT>
-void BinaryNodeTree<DT>::postorder(void visit(DT &), std::shared_ptr<BinaryNode<DT>> treePtr) const
+void BinaryNodeTree<DT>::postorder(void visit(DT &, std::fstream&), std::shared_ptr<BinaryNode<DT>> treePtr, std::fstream& fileOut) const
 {
     if (treePtr != nullptr)
     {
-        postorder(visit, treePtr->getLeftChildPtr());
-        postorder(visit, treePtr->getRightChildPtr());
+        postorder(visit, treePtr->getLeftChildPtr(), fileOut);
+        postorder(visit, treePtr->getRightChildPtr(), fileOut);
         DT theItem = treePtr->getItem();
-        visit(theItem);
+        visit(theItem, fileOut);
     }
 }
 
@@ -424,41 +424,41 @@ bool BinaryNodeTree<DT>::contains(const DT &anEntry) const
     return true;
 }
 
-/* -----------------------------------------------------------------------------
-FUNCTION:          
-DESCRIPTION:       
-RETURNS:           
-NOTES:            
-------------------------------------------------------------------------------- */
-template <class DT>
-void BinaryNodeTree<DT>::preorderTraverse(void visit(DT &)) const
-{
-    preorder(visit, rootPtr);
-}
+// /* -----------------------------------------------------------------------------
+// FUNCTION:          
+// DESCRIPTION:       
+// RETURNS:           
+// NOTES:            
+// -------------------------------------------------------------------------------*/ 
+// template <class DT>
+// void BinaryNodeTree<DT>::preorderTraverse(void visit(DT &, std::fstream&)) const
+// {
+//     preorder(visit, rootPtr);
+// }
 
-/* -----------------------------------------------------------------------------
-FUNCTION:          
-DESCRIPTION:       
-RETURNS:           
-NOTES:            
-------------------------------------------------------------------------------- */
-template <class DT>
-void BinaryNodeTree<DT>::inorderTraverse(void visit(DT &)) const
-{
-    inorder(visit, rootPtr);
-}
+// /* -----------------------------------------------------------------------------
+// FUNCTION:          
+// DESCRIPTION:       
+// RETURNS:           
+// NOTES:            
+// ------------------------------------------------------------------------------- */
+// template <class DT>
+// void BinaryNodeTree<DT>::inorderTraverse(void visit(DT &, std::fstream&)) const
+// {
+//     inorder(visit, rootPtr);
+// }
 
-/* -----------------------------------------------------------------------------
-FUNCTION:          
-DESCRIPTION:       
-RETURNS:           
-NOTES:            
-------------------------------------------------------------------------------- */
-template <class DT>
-void BinaryNodeTree<DT>::postorderTraverse(void visit(DT &)) const
-{
-    postorder(visit, rootPtr);
-}
+// /* -----------------------------------------------------------------------------
+// FUNCTION:          
+// DESCRIPTION:       
+// RETURNS:           
+// NOTES:            
+// -------------------------------------------------------------------------------*/
+// template <class DT>
+// void BinaryNodeTree<DT>::postorderTraverse(void visit(DT &, std::fstream&)) const
+// {
+//     postorder(visit, rootPtr);
+// }
 
 /* -----------------------------------------------------------------------------
 FUNCTION:          

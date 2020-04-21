@@ -77,9 +77,9 @@ public:
     //------------------------------------------------------------
     // Public Traversals Section. From Interface
     //------------------------------------------------------------
-    void preorderTraverse(void visit(DT &)) const override;
-    void inorderTraverse(void visit(DT &)) const override;
-    void postorderTraverse(void visit(DT &)) const override;
+    void preorderTraverse(void visit(DT &, std::fstream&), std::fstream&) const override;
+    void inorderTraverse(void visit(DT &, std::fstream&), std::fstream&) const override;
+    void postorderTraverse(void visit(DT &, std::fstream&), std::fstream&) const override;
 
     //------------------------------------------------------------
     // Overloaded Operator Section.
